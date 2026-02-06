@@ -1,0 +1,237 @@
+/* ===== THEME ROTATIF & LUDIQUE (JAUNE CLAIR + VERT CLAIR) ===== */
+:root{
+  --bg-1:#f6fff7;
+  --bg-2:#ecffe9;
+  --text:#173b2a;
+  --muted:#4f7d67;
+  --green:#7ee081;       /* vert clair */
+  --green-2:#52c878;
+  --yellow:#ffe88a;      /* jaune clair */
+  --yellow-2:#ffd95c;
+  --white:#ffffff;
+  --shadow:0 12px 28px rgba(24,80,48,.14);
+  --radius:20px;
+}
+
+/* Base */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 10% 10%, #fff9cf 0%, transparent 26%),
+    radial-gradient(circle at 90% 20%, #dfffe4 0%, transparent 30%),
+    linear-gradient(135deg,var(--bg-1),var(--bg-2));
+  overflow-x:hidden;
+}
+
+/* Bulles décoratives qui tournent doucement */
+.bg-bubble{
+  position:fixed; z-index:-1; border-radius:50%; pointer-events:none;
+  border:2px dashed rgba(82,200,120,.35);
+  animation:spinSlow 26s linear infinite;
+}
+.bg-bubble.b1{width:360px;height:360px;left:-120px;top:-120px}
+.bg-bubble.b2{
+  width:280px;height:280px;right:-80px;top:110px;
+  animation-direction:reverse; animation-duration:20s;
+}
+.bg-bubble.b3{
+  width:420px;height:420px;right:8%;bottom:-260px;
+  animation-duration:34s;
+}
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+
+/* Header / Nav */
+header{
+  position:sticky; top:0; z-index:40;
+  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.7);
+  border-bottom:1px solid rgba(82,200,120,.22);
+}
+.nav-wrap{
+  width:min(1180px,92%);
+  margin:auto;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 0;
+}
+.brand{
+  display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit;
+}
+.brand img{
+  width:56px;height:56px;border-radius:50%;
+  border:3px solid var(--yellow);
+  box-shadow:var(--shadow);
+  transition:transform .35s ease;
+}
+.brand:hover img{ transform:rotate(10deg) scale(1.05); }
+
+.nav{
+  display:flex; flex-wrap:wrap; gap:8px;
+}
+.nav button{
+  border:none; cursor:pointer;
+  padding:10px 14px; border-radius:999px;
+  color:var(--text); font-weight:700;
+  background:linear-gradient(135deg,#fffbe2,#f1ffe9);
+  box-shadow:0 3px 0 #d3eecf;
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.nav button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 7px 14px rgba(68,150,95,.2);
+}
+.nav button.active{
+  background:linear-gradient(135deg,var(--yellow),var(--green));
+}
+
+/* Sections / cartes */
+.container{width:min(1180px,92%);margin:auto}
+.page{display:none;animation:fadeIn .35s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.hero{
+  margin-top:18px; padding:30px; border-radius:28px;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255,232,138,.6), transparent 38%),
+    radial-gradient(circle at 80% 20%, rgba(126,224,129,.35), transparent 40%),
+    var(--white);
+  border:1px solid rgba(82,200,120,.25);
+  box-shadow:var(--shadow);
+  position:relative; overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute; right:-50px; top:-50px;
+  width:170px;height:170px;border-radius:50%;
+  border:14px solid rgba(255,217,92,.4);
+  animation:spinSlow 15s linear infinite;
+}
+.hero h1,.hero h2{margin:.2em 0 .4em}
+.hero p{color:var(--muted);max-width:760px}
+
+/* Boutons ludiques */
+.btn{
+  border:none; cursor:pointer; font-weight:800;
+  padding:11px 16px; border-radius:999px;
+  transition:transform .2s ease, filter .2s ease;
+}
+.btn-primary{
+  color:#1d2f18;
+  background:linear-gradient(135deg,var(--yellow),#fff3b7);
+}
+.btn-secondary{
+  color:#113524;
+  background:linear-gradient(135deg,var(--green),#c8ffd0);
+}
+.btn:hover{transform:translateY(-2px) scale(1.02); filter:saturate(1.05)}
+
+/* Grilles */
+.grid{
+  margin-top:16px;
+  display:grid; gap:14px;
+  grid-template-columns:repeat(12,1fr);
+}
+.card{
+  grid-column:span 4;
+  background:var(--white);
+  border:1px solid rgba(82,200,120,.24);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:var(--shadow);
+  position:relative;
+}
+.card h3{margin:0 0 8px}
+.card p{margin:0;color:var(--muted)}
+.card:hover{transform:translateY(-3px)}
+.card, .product, .news-item{transition:transform .22s ease}
+
+/* Pastilles rondes décoratives sur cartes */
+.card::before{
+  content:"";
+  position:absolute; right:12px; top:12px;
+  width:12px;height:12px;border-radius:50%;
+  background:var(--yellow);
+  box-shadow:0 0 0 5px rgba(255,232,138,.35);
+}
+
+/* Produit avec rotation ludique au survol */
+.product{
+  grid-column:span 4;
+  background:#fff;
+  border-radius:16px;
+  border:1px solid rgba(82,200,120,.24);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.product img{
+  width:100%; height:190px; object-fit:cover;
+  transition:transform .5s ease;
+}
+.product:hover img{ transform:scale(1.06) rotate(-1.2deg); }
+.product .p-body{padding:12px}
+.tag{
+  display:inline-block; margin-top:8px; font-size:.82rem; font-weight:700;
+  background:#fff6c9; color:#594400;
+  border:1px solid #f2db7f; border-radius:999px; padding:4px 10px;
+}
+
+/* News */
+.news-list{display:grid;gap:10px}
+.news-item{
+  background:#fff;
+  border:1px solid rgba(82,200,120,.24);
+  border-radius:14px;
+  padding:14px;
+  box-shadow:var(--shadow);
+}
+.news-item a{color:#1f6d44;font-weight:800}
+.news-item p{margin:.45em 0 0;color:var(--muted)}
+.news-item:hover{transform:translateX(2px)}
+
+/* Contact */
+.contact-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:14px;
+}
+.contact-box,.map-box{
+  background:#fff;
+  border:1px solid rgba(82,200,120,.24);
+  border-radius:16px;
+  padding:14px;
+  box-shadow:var(--shadow);
+}
+.contact-box li{
+  list-style:none;
+  background:#f6fff2;
+  border:1px dashed rgba(82,200,120,.4);
+  border-radius:10px;
+  padding:10px;
+  margin-bottom:8px;
+}
+iframe{width:100%;height:320px;border:0;border-radius:12px}
+
+/* Animation rotative pour éléments ciblés (ajoute class="spin-on-hover") */
+.spin-on-hover{transition:transform .5s ease}
+.spin-on-hover:hover{transform:rotate(6deg) scale(1.04)}
+
+/* Loader rond (si besoin) */
+.loader-ring{
+  width:54px;height:54px;border-radius:50%;
+  border:6px solid #e8f9d8;
+  border-top-color:var(--green-2);
+  border-right-color:var(--yellow-2);
+  animation:spinFast 1s linear infinite;
+}
+@keyframes spinFast{to{transform:rotate(360deg)}}
+
+/* Responsive */
+@media (max-width: 980px){
+  .card,.product{grid-column:span 6}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media (max-width: 640px){
+  .nav-wrap{flex-direction:column;align-items:flex-start;gap:10px}
+  .card,.product{grid-column:span 12}
+}
