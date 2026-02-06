@@ -1,237 +1,693 @@
-/* ===== THEME ROTATIF & LUDIQUE (JAUNE CLAIR + VERT CLAIR) ===== */
-:root{
-  --bg-1:#f6fff7;
-  --bg-2:#ecffe9;
-  --text:#173b2a;
-  --muted:#4f7d67;
-  --green:#7ee081;       /* vert clair */
-  --green-2:#52c878;
-  --yellow:#ffe88a;      /* jaune clair */
-  --yellow-2:#ffd95c;
-  --white:#ffffff;
-  --shadow:0 12px 28px rgba(24,80,48,.14);
-  --radius:20px;
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-/* Base */
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  color:var(--text);
-  background:
-    radial-gradient(circle at 10% 10%, #fff9cf 0%, transparent 26%),
-    radial-gradient(circle at 90% 20%, #dfffe4 0%, transparent 30%),
-    linear-gradient(135deg,var(--bg-1),var(--bg-2));
-  overflow-x:hidden;
-}
+  <!-- SEO -->
+  <title>Challenge Food Export | Vanille de Madagascar, Poivre, Cacao</title>
+  <meta name="description" content="Challenge Food Export à Sambava Madagascar : vanille, poivre noir, cacao. Qualité export, traçabilité, commandes en gros, prix cassé -25%." />
+  <meta name="keywords" content="Challenge Food, vanille Madagascar, vanilla beans supplier Madagascar, exportateur vanille, poivre noir Madagascar, cacao Madagascar, commande vanille en gros, Sambava" />
+  <meta name="author" content="Challenge Food Export" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Challenge Food Export | Vanille de Madagascar" />
+  <meta property="og:description" content="Vanille, poivre noir, cacao — export B2B depuis Sambava, Madagascar." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="LOGO CF.png" />
+  <meta name="theme-color" content="#12b76a" />
 
-/* Bulles décoratives qui tournent doucement */
-.bg-bubble{
-  position:fixed; z-index:-1; border-radius:50%; pointer-events:none;
-  border:2px dashed rgba(82,200,120,.35);
-  animation:spinSlow 26s linear infinite;
-}
-.bg-bubble.b1{width:360px;height:360px;left:-120px;top:-120px}
-.bg-bubble.b2{
-  width:280px;height:280px;right:-80px;top:110px;
-  animation-direction:reverse; animation-duration:20s;
-}
-.bg-bubble.b3{
-  width:420px;height:420px;right:8%;bottom:-260px;
-  animation-duration:34s;
-}
-@keyframes spinSlow{to{transform:rotate(360deg)}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-/* Header / Nav */
-header{
-  position:sticky; top:0; z-index:40;
-  backdrop-filter:blur(8px);
-  background:rgba(255,255,255,.7);
-  border-bottom:1px solid rgba(82,200,120,.22);
-}
-.nav-wrap{
-  width:min(1180px,92%);
-  margin:auto;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:12px 0;
-}
-.brand{
-  display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit;
-}
-.brand img{
-  width:56px;height:56px;border-radius:50%;
-  border:3px solid var(--yellow);
-  box-shadow:var(--shadow);
-  transition:transform .35s ease;
-}
-.brand:hover img{ transform:rotate(10deg) scale(1.05); }
+  <!-- 3D model viewer -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
-.nav{
-  display:flex; flex-wrap:wrap; gap:8px;
-}
-.nav button{
-  border:none; cursor:pointer;
-  padding:10px 14px; border-radius:999px;
-  color:var(--text); font-weight:700;
-  background:linear-gradient(135deg,#fffbe2,#f1ffe9);
-  box-shadow:0 3px 0 #d3eecf;
-  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
-}
-.nav button:hover{
-  transform:translateY(-2px);
-  box-shadow:0 7px 14px rgba(68,150,95,.2);
-}
-.nav button.active{
-  background:linear-gradient(135deg,var(--yellow),var(--green));
-}
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Challenge Food Export",
+    "logo":"LOGO CF.png",
+    "email":"commercial.export@cfood.store",
+    "telephone":"+261322549937",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Sect 7, Besopaka",
+      "addressLocality":"Sambava",
+      "addressCountry":"MG"
+    }
+  }
+  </script>
 
-/* Sections / cartes */
-.container{width:min(1180px,92%);margin:auto}
-.page{display:none;animation:fadeIn .35s ease}
-.page.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  <style>
+    :root{
+      --bg:#08110d;
+      --card:#0f1c16;
+      --card-2:#13241c;
+      --text:#ecf4ef;
+      --muted:#b9cabf;
+      --green:#12b76a;
+      --green-2:#0ea35f;
+      --yellow:#ffe88a;
+      --yellow-2:#ffd95c;
+      --ring:rgba(18,183,106,.2);
+      --shadow:0 12px 30px rgba(0,0,0,.35);
+      --radius:18px;
+    }
 
-.hero{
-  margin-top:18px; padding:30px; border-radius:28px;
-  background:
-    radial-gradient(circle at 15% 10%, rgba(255,232,138,.6), transparent 38%),
-    radial-gradient(circle at 80% 20%, rgba(126,224,129,.35), transparent 40%),
-    var(--white);
-  border:1px solid rgba(82,200,120,.25);
-  box-shadow:var(--shadow);
-  position:relative; overflow:hidden;
-}
-.hero::after{
-  content:"";
-  position:absolute; right:-50px; top:-50px;
-  width:170px;height:170px;border-radius:50%;
-  border:14px solid rgba(255,217,92,.4);
-  animation:spinSlow 15s linear infinite;
-}
-.hero h1,.hero h2{margin:.2em 0 .4em}
-.hero p{color:var(--muted);max-width:760px}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255,232,138,.10), transparent 30%),
+        radial-gradient(circle at 85% 18%, rgba(18,183,106,.14), transparent 35%),
+        linear-gradient(135deg,#0c1712,#070d0a);
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(1200px,92%);margin:auto}
 
-/* Boutons ludiques */
-.btn{
-  border:none; cursor:pointer; font-weight:800;
-  padding:11px 16px; border-radius:999px;
-  transition:transform .2s ease, filter .2s ease;
-}
-.btn-primary{
-  color:#1d2f18;
-  background:linear-gradient(135deg,var(--yellow),#fff3b7);
-}
-.btn-secondary{
-  color:#113524;
-  background:linear-gradient(135deg,var(--green),#c8ffd0);
-}
-.btn:hover{transform:translateY(-2px) scale(1.02); filter:saturate(1.05)}
+    /* Décor circulaire */
+    .orb{
+      position:fixed; border-radius:50%; pointer-events:none; z-index:-1;
+      border:1px dashed rgba(255,255,255,.12);
+      background:radial-gradient(circle at 35% 35%, rgba(18,183,106,.2), transparent 65%);
+      animation:spin 30s linear infinite;
+    }
+    .o1{width:380px;height:380px;left:-120px;top:-100px}
+    .o2{width:300px;height:300px;right:-90px;top:130px;animation-direction:reverse;animation-duration:22s}
+    .o3{width:500px;height:500px;right:8%;bottom:-290px;animation-duration:36s}
+    @keyframes spin{to{transform:rotate(360deg)}}
 
-/* Grilles */
-.grid{
-  margin-top:16px;
-  display:grid; gap:14px;
-  grid-template-columns:repeat(12,1fr);
-}
-.card{
-  grid-column:span 4;
-  background:var(--white);
-  border:1px solid rgba(82,200,120,.24);
-  border-radius:var(--radius);
-  padding:16px;
-  box-shadow:var(--shadow);
-  position:relative;
-}
-.card h3{margin:0 0 8px}
-.card p{margin:0;color:var(--muted)}
-.card:hover{transform:translateY(-3px)}
-.card, .product, .news-item{transition:transform .22s ease}
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(10px);
+      background:linear-gradient(to bottom, rgba(5,8,6,.88), rgba(5,8,6,.6));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-wrap{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:12px 0;
+    }
+    .brand{display:flex;align-items:center;gap:10px;min-width:0}
+    .brand img{
+      width:58px;height:58px;border-radius:50%;object-fit:cover;background:#fff;
+      border:2px solid rgba(255,255,255,.25);box-shadow:var(--shadow);cursor:pointer;
+    }
+    .brand-text{line-height:1.1}
+    .brand-text strong{display:block;font-weight:800}
+    .brand-text span{color:var(--yellow);font-family:"Playfair Display",serif;font-weight:700}
 
-/* Pastilles rondes décoratives sur cartes */
-.card::before{
-  content:"";
-  position:absolute; right:12px; top:12px;
-  width:12px;height:12px;border-radius:50%;
-  background:var(--yellow);
-  box-shadow:0 0 0 5px rgba(255,232,138,.35);
-}
+    .nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .nav button{
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      padding:10px 13px;border-radius:999px;font-weight:700;cursor:pointer;
+      transition:.22s ease;
+    }
+    .nav button:hover,.nav button.active{
+      background:linear-gradient(135deg,var(--green),var(--green-2));
+      border-color:transparent;transform:translateY(-1px);
+    }
 
-/* Produit avec rotation ludique au survol */
-.product{
-  grid-column:span 4;
-  background:#fff;
-  border-radius:16px;
-  border:1px solid rgba(82,200,120,.24);
-  overflow:hidden;
-  box-shadow:var(--shadow);
-}
-.product img{
-  width:100%; height:190px; object-fit:cover;
-  transition:transform .5s ease;
-}
-.product:hover img{ transform:scale(1.06) rotate(-1.2deg); }
-.product .p-body{padding:12px}
-.tag{
-  display:inline-block; margin-top:8px; font-size:.82rem; font-weight:700;
-  background:#fff6c9; color:#594400;
-  border:1px solid #f2db7f; border-radius:999px; padding:4px 10px;
-}
+    /* Promo bar */
+    .promo-bar{
+      position:sticky;top:82px;z-index:49;
+      display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;
+      padding:10px 12px;
+      background:linear-gradient(90deg,rgba(255,232,138,.95),rgba(255,217,92,.94));
+      color:#221700;border-bottom:1px solid rgba(0,0,0,.08);
+      font-weight:800;
+    }
+    .promo-bar .promo-btn{
+      border:0;cursor:pointer;
+      padding:8px 12px;border-radius:999px;
+      background:#1e1700;color:#fff;font-weight:700;
+    }
 
-/* News */
-.news-list{display:grid;gap:10px}
-.news-item{
-  background:#fff;
-  border:1px solid rgba(82,200,120,.24);
-  border-radius:14px;
-  padding:14px;
-  box-shadow:var(--shadow);
-}
-.news-item a{color:#1f6d44;font-weight:800}
-.news-item p{margin:.45em 0 0;color:var(--muted)}
-.news-item:hover{transform:translateX(2px)}
+    main{padding:20px 0 60px}
+    .page{display:none;animation:fade .35s ease}
+    .page.active{display:block}
+    @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* Contact */
-.contact-grid{
-  display:grid; grid-template-columns:1fr 1fr; gap:14px;
-}
-.contact-box,.map-box{
-  background:#fff;
-  border:1px solid rgba(82,200,120,.24);
-  border-radius:16px;
-  padding:14px;
-  box-shadow:var(--shadow);
-}
-.contact-box li{
-  list-style:none;
-  background:#f6fff2;
-  border:1px dashed rgba(82,200,120,.4);
-  border-radius:10px;
-  padding:10px;
-  margin-bottom:8px;
-}
-iframe{width:100%;height:320px;border:0;border-radius:12px}
+    .section-title{
+      font-family:"Playfair Display",serif;
+      font-size:clamp(1.6rem,3.5vw,2.2rem);
+      margin:6px 0 14px;
+      display:flex;align-items:center;gap:10px;
+    }
+    .section-title::before{
+      content:"";width:30px;height:30px;border-radius:50%;
+      border:2px solid var(--green);box-shadow:0 0 0 8px var(--ring);
+    }
 
-/* Animation rotative pour éléments ciblés (ajoute class="spin-on-hover") */
-.spin-on-hover{transition:transform .5s ease}
-.spin-on-hover:hover{transform:rotate(6deg) scale(1.04)}
+    .hero{
+      min-height:72vh; border-radius:28px; overflow:hidden; position:relative;
+      border:1px solid rgba(255,255,255,.1); box-shadow:var(--shadow);
+      display:grid; align-items:end;
+      background:
+        linear-gradient(to right, rgba(6,12,9,.78), rgba(6,12,9,.38)),
+        url("IMG_0117.jpg") center/cover no-repeat;
+    }
+    .hero-content{padding:34px}
+    .badge{
+      display:inline-flex;gap:8px;align-items:center;
+      padding:8px 13px;border-radius:999px;
+      background:rgba(18,183,106,.18); border:1px solid rgba(18,183,106,.6);
+      font-weight:700;color:#d8ffeb;
+    }
+    .hero h1{
+      margin:14px 0 10px;
+      font-family:"Playfair Display",serif;
+      font-size:clamp(2rem,5.5vw,3.4rem);
+      line-height:1.1;
+    }
+    .hero p{max-width:760px;color:#d9e6de}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .btn{
+      border:0;cursor:pointer;padding:11px 16px;border-radius:999px;font-weight:800;
+      transition:.2s ease;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:linear-gradient(135deg,var(--green),var(--green-2));color:#fff}
+    .btn-secondary{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);color:#fff}
 
-/* Loader rond (si besoin) */
-.loader-ring{
-  width:54px;height:54px;border-radius:50%;
-  border:6px solid #e8f9d8;
-  border-top-color:var(--green-2);
-  border-right-color:var(--yellow-2);
-  animation:spinFast 1s linear infinite;
-}
-@keyframes spinFast{to{transform:rotate(360deg)}}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:16px}
+    .card{
+      grid-column:span 4;
+      background:linear-gradient(180deg,var(--card),var(--card-2));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);
+    }
+    .card h3{margin:0 0 8px}
+    .muted{color:var(--muted)}
 
-/* Responsive */
-@media (max-width: 980px){
-  .card,.product{grid-column:span 6}
-  .contact-grid{grid-template-columns:1fr}
-}
-@media (max-width: 640px){
-  .nav-wrap{flex-direction:column;align-items:flex-start;gap:10px}
-  .card,.product{grid-column:span 12}
-}
+    /* Produits + 3D */
+    .products-wrap{
+      position:relative;min-height:620px;border-radius:24px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.1);
+      background:#08110d;
+    }
+    .products-3d-bg{
+      position:absolute;inset:0;z-index:0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(18,183,106,.26), transparent 36%),
+        radial-gradient(circle at 80% 30%, rgba(255,232,138,.16), transparent 34%),
+        linear-gradient(to bottom, rgba(7,12,9,.2), rgba(7,12,9,.75));
+    }
+    model-viewer{
+      width:100%;height:100%;background:transparent;
+      --poster-color: transparent;
+    }
+    .products-content{position:relative;z-index:2;padding:20px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px}
+    .chip{
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.07);color:#fff;
+      padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:700;
+    }
+    .chip.active{background:linear-gradient(135deg,var(--yellow),var(--green));color:#102016;border-color:transparent}
+
+    .products-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    .product{
+      grid-column:span 4;
+      background:rgba(8,15,11,.78);backdrop-filter:blur(4px);
+      border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;
+    }
+    .product img{width:100%;height:190px;object-fit:cover}
+    .product .p-body{padding:12px}
+    .product h4{margin:0 0 6px}
+    .tag{
+      display:inline-block;margin-top:8px;
+      padding:4px 10px;border-radius:999px;font-size:.82rem;font-weight:700;
+      background:rgba(255,232,138,.2);border:1px solid rgba(255,232,138,.55);color:#ffeeb4;
+    }
+
+    /* Galerie */
+    .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:8px}
+    .gallery img{
+      grid-column:span 3;height:180px;object-fit:cover;border-radius:12px;
+      border:1px solid rgba(255,255,255,.1);
+    }
+
+    /* News */
+    .news-list{display:grid;gap:10px}
+    .news-item{
+      background:linear-gradient(180deg,var(--card),var(--card-2));
+      border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px;
+    }
+    .news-item a{color:#c9ffe3;font-weight:800}
+    .news-item p{margin:8px 0 0;color:var(--muted)}
+
+    /* Commande */
+    .order-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+    .order-card,.side-box{
+      background:linear-gradient(180deg,var(--card),var(--card-2));
+      border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px;
+    }
+    .order-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .order-form input,.order-form select,.order-form textarea{
+      width:100%;padding:11px 12px;border-radius:10px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.06);color:var(--text);
+    }
+    .order-form select option{color:#111}
+    .order-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .order-side img{
+      width:100%;height:220px;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.1);margin-bottom:10px;
+    }
+
+    /* Etapes */
+    .timeline{display:grid;gap:10px;margin-bottom:16px}
+    .step{
+      display:grid;grid-template-columns:54px 1fr;gap:10px;align-items:start;
+      background:linear-gradient(180deg,var(--card),var(--card-2));
+      border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px;
+    }
+    .step-num{
+      width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+      font-weight:800;color:#112217;background:linear-gradient(135deg,var(--yellow),var(--green));
+    }
+    .resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .resource-card{
+      background:linear-gradient(180deg,var(--card),var(--card-2));
+      border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;
+    }
+    .resource-card img{width:100%;height:180px;object-fit:cover}
+    .resource-card h4{margin:10px 12px 6px}
+    .resource-card p{margin:0 12px 12px}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .contact-box,.map-box{
+      background:linear-gradient(180deg,var(--card),var(--card-2));
+      border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px;
+    }
+    .contact-box ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+    .contact-box li{padding:10px;border-radius:10px;background:rgba(255,255,255,.04)}
+    iframe{width:100%;height:330px;border:0;border-radius:12px}
+
+    footer{
+      margin-top:24px;padding:18px 0 34px;text-align:center;color:#afc0b6;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    @media (max-width:1024px){
+      .card,.product{grid-column:span 6}
+      .gallery img{grid-column:span 4}
+      .order-layout,.contact-grid{grid-template-columns:1fr}
+      .resource-grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:680px){
+      .nav-wrap{flex-direction:column;align-items:flex-start}
+      .card,.product{grid-column:span 12}
+      .gallery img{grid-column:span 6;height:145px}
+      .order-grid{grid-template-columns:1fr}
+      .resource-grid{grid-template-columns:1fr}
+      .promo-bar{top:116px}
+    }
+  </style>
+</head>
+<body>
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="orb o3"></div>
+
+  <header>
+    <div class="container nav-wrap">
+      <a href="#" class="brand" data-go="home" aria-label="Retour accueil">
+        <img src="LOGO CF.png" alt="Logo Challenge Food">
+        <div class="brand-text">
+          <strong>CHALLENGE FOOD</strong>
+          <span>Export</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <button class="active" data-page="home">Accueil</button>
+        <button data-page="about">À propos</button>
+        <button data-page="products">Produits</button>
+        <button data-page="commande">Commande Vanille</button>
+        <button data-page="etapes">Étapes & Ressources</button>
+        <button data-page="gallery">Galerie</button>
+        <button data-page="news">Actualités</button>
+        <button data-page="contact">Contact</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="promo-bar">
+    🔥 PRIX CASSÉ : <strong>-25% de remise sur les commandes en gros</strong>
+    <button class="promo-btn" data-page="commande">Commander</button>
+  </div>
+
+  <main class="container">
+    <!-- ACCUEIL -->
+    <section id="home" class="page active">
+      <div class="hero">
+        <div class="hero-content">
+          <span class="badge">Vanille Bourbon • Sambava • Madagascar</span>
+          <h1>Challenge Food Export</h1>
+          <p>
+            Exportateur de vanille de Madagascar, poivre noir et cacao.
+            Filière locale, qualité premium, traçabilité et solutions B2B.
+          </p>
+          <div class="actions">
+            <button class="btn btn-primary" data-page="products">Voir nos produits</button>
+            <button class="btn btn-secondary" data-page="commande">Demander un devis</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Qualité export</h3>
+          <p class="muted">Tri, calibrage, préparation et contrôle qualité adaptés aux marchés internationaux.</p>
+        </article>
+        <article class="card">
+          <h3>Filière locale</h3>
+          <p class="muted">Approvisionnement direct producteurs et valorisation des communautés de la région SAVA.</p>
+        </article>
+        <article class="card">
+          <h3>Commande en gros</h3>
+          <p class="muted">Conditions commerciales B2B avec remise spéciale sur volume.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- A PROPOS -->
+    <section id="about" class="page">
+      <h2 class="section-title">À propos de Challenge Food</h2>
+      <div class="grid">
+        <article class="card" style="grid-column:span 8">
+          <h3>Mission</h3>
+          <p class="muted">Fournir des produits premium (vanille, poivre noir, cacao) avec un standard export fiable.</p>
+          <h3 style="margin-top:12px;">Vision</h3>
+          <p class="muted">Créer une marque forte de Madagascar, reconnue pour la qualité, la transparence et la durabilité.</p>
+        </article>
+        <article class="card" style="grid-column:span 4">
+          <img src="WhatsApp-Image-2025-08-13-a-16.49.25_52ef66a7 (1).jpg" alt="Tri de vanille">
+        </article>
+      </div>
+    </section>
+
+    <!-- PRODUITS -->
+    <section id="products" class="page">
+      <h2 class="section-title">Nos produits</h2>
+      <div class="products-wrap">
+        <div class="products-3d-bg">
+          <model-viewer
+            id="mv3d"
+            src="vanilla%20bean%20bundle%203d%20model%20(1).glb"
+            alt="Modèle 3D vanille"
+            camera-controls
+            auto-rotate
+            rotation-per-second="18deg"
+            interaction-prompt="none"
+            shadow-intensity="1"
+            exposure="1"
+            disable-pan>
+          </model-viewer>
+        </div>
+
+        <div class="products-content">
+          <p class="muted">Fond 3D interactif (glisser pour tourner le modèle).</p>
+          <div class="chips">
+            <button class="chip active" data-glb="vanilla%20bean%20bundle%203d%20model%20(1).glb">Modèle 3D 1</button>
+            <button class="chip" data-glb="vanilla%20pod%203d%20model_Clone1.glb">Modèle 3D 2</button>
+          </div>
+
+          <div class="products-grid">
+            <article class="product">
+              <img src="01 vanille gousses (1).jpg" alt="Gousses de vanille premium">
+              <div class="p-body">
+                <h4>Vanille premium</h4>
+                <p class="muted">Gousses sélectionnées pour export.</p>
+                <span class="tag">Disponible en gros</span>
+              </div>
+            </article>
+            <article class="product">
+              <img src="id_102_récolte_verte_mature.jpg" alt="Vanille verte mature">
+              <div class="p-body">
+                <h4>Vanille verte</h4>
+                <p class="muted">Suivi maturité et récolte.</p>
+                <span class="tag">Traçabilité locale</span>
+              </div>
+            </article>
+            <article class="product">
+              <img src="POIVRE+NOIR+1.jpg" alt="Poivre noir Madagascar">
+              <div class="p-body">
+                <h4>Poivre noir</h4>
+                <p class="muted">Épice aromatique triée.</p>
+                <span class="tag">Qualité export</span>
+              </div>
+            </article>
+            <article class="product">
+              <img src="poudre-de-cacao.jpg" alt="Poudre de cacao">
+              <div class="p-body">
+                <h4>Poudre de cacao</h4>
+                <p class="muted">Conditionnement pro B2B.</p>
+                <span class="tag">Commande volume</span>
+              </div>
+            </article>
+            <article class="product">
+              <img src="R.jpeg" alt="Fèves et produits cacao">
+              <div class="p-body">
+                <h4>Produits cacao</h4>
+                <p class="muted">Lots adaptés à la demande.</p>
+                <span class="tag">Spécifications pro</span>
+              </div>
+            </article>
+            <article class="product">
+              <img src="IMG_1297.jpg" alt="Vanille préparée">
+              <div class="p-body">
+                <h4>Vanille préparée</h4>
+                <p class="muted">Tri, calibrage et homogénéité.</p>
+                <span class="tag">Premium B2B</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMANDE -->
+    <section id="commande" class="page">
+      <h2 class="section-title">Commande de Vanille</h2>
+      <div class="order-layout">
+        <div class="order-card">
+          <h3>Passer une commande B2B</h3>
+          <p class="muted">Renseignez les détails pour recevoir votre offre commerciale (prix, disponibilité, délai).</p>
+
+          <form class="order-form" onsubmit="event.preventDefault(); alert('Merci ! Votre demande de commande a été envoyée.');">
+            <div class="order-grid">
+              <input type="text" placeholder="Nom complet" required>
+              <input type="text" placeholder="Entreprise" required>
+              <input type="email" placeholder="Email professionnel" required>
+              <input type="tel" placeholder="Téléphone / WhatsApp" required>
+
+              <select required>
+                <option value="">Type de vanille</option>
+                <option>Vanille noire gourmet</option>
+                <option>Vanille TK</option>
+                <option>Vanille rouge</option>
+                <option>Vanille verte</option>
+              </select>
+
+              <input type="number" min="1" placeholder="Quantité (kg)" required>
+
+              <select required>
+                <option value="">Longueur souhaitée</option>
+                <option>14-16 cm</option>
+                <option>16-18 cm</option>
+                <option>18+ cm</option>
+              </select>
+
+              <select required>
+                <option value="">Qualité</option>
+                <option>Premium</option>
+                <option>Standard export</option>
+              </select>
+            </div>
+
+            <textarea rows="5" placeholder="Spécifications : humidité, emballage, destination, incoterm..."></textarea>
+
+            <div class="order-actions">
+              <button class="btn btn-primary" type="submit">Envoyer la demande</button>
+              <a class="btn btn-secondary" href="mailto:commercial.export@cfood.store?subject=Demande%20de%20commande%20vanille">Email direct</a>
+              <a class="btn btn-secondary" href="tel:+261322549937">Appeler</a>
+            </div>
+          </form>
+        </div>
+
+        <aside class="order-side">
+          <img src="IMG_6041.jpg" alt="Récolte de vanille">
+          <div class="side-box">
+            <h4>Promo en cours</h4>
+            <p><strong>-25% sur commandes en gros</strong>.</p>
+          </div>
+          <div class="side-box">
+            <h4>Contact rapide</h4>
+            <p>+261 32 25 499 37<br>commercial.export@cfood.store</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ETAPES & RESSOURCES -->
+    <section id="etapes" class="page">
+      <h2 class="section-title">Étapes de la Vanille & Ressources</h2>
+
+      <div class="timeline">
+        <article class="step"><div class="step-num">1</div><div><h3>Culture & entretien</h3><p class="muted">Mise en place et suivi des lianes.</p></div></article>
+        <article class="step"><div class="step-num">2</div><div><h3>Floraison & pollinisation</h3><p class="muted">Pollinisation manuelle au bon moment.</p></div></article>
+        <article class="step"><div class="step-num">3</div><div><h3>Récolte</h3><p class="muted">Récolte selon maturité et critères qualité.</p></div></article>
+        <article class="step"><div class="step-num">4</div><div><h3>Échaudage & étuvage</h3><p class="muted">Démarrage du processus de transformation.</p></div></article>
+        <article class="step"><div class="step-num">5</div><div><h3>Séchage</h3><p class="muted">Réduction progressive de l’humidité.</p></div></article>
+        <article class="step"><div class="step-num">6</div><div><h3>Affinage & tri</h3><p class="muted">Développement aromatique, calibrage, tri.</p></div></article>
+        <article class="step"><div class="step-num">7</div><div><h3>Conditionnement & export</h3><p class="muted">Emballage, documents et logistique expédition.</p></div></article>
+      </div>
+
+      <div class="resource-grid">
+        <article class="resource-card">
+          <img src="id_102_récolte_verte_mature.jpg" alt="Guide récolte">
+          <h4>Guide récolte</h4>
+          <p class="muted">Repères pour la maturité optimale.</p>
+        </article>
+        <article class="resource-card">
+          <img src="IMG_1297.jpg" alt="Guide tri qualité">
+          <h4>Guide tri qualité</h4>
+          <p class="muted">Longueur, souplesse, humidité, aspect.</p>
+        </article>
+        <article class="resource-card">
+          <img src="01 vanille gousses (1).jpg" alt="Fiche export vanille">
+          <h4>Fiche export</h4>
+          <p class="muted">Spécifications pro pour importateurs.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- GALERIE -->
+    <section id="gallery" class="page">
+      <h2 class="section-title">Galerie</h2>
+      <div class="gallery">
+        <img src="12.jpg" alt="Activité locale">
+        <img src="1000012558.jpg" alt="Communauté locale">
+        <img src="34639744174_64ea49b0c0_k.jpg" alt="Paysage Madagascar">
+        <img src="35441089096_26be13c1a4_k-e1499870530578-1024x673.jpg" alt="Montagne">
+        <img src="Gemini_Generated_Image_71s74171s74171s7.png" alt="Bâtiment">
+        <img src="image.jpg" alt="Vanille et panier">
+        <img src="IMG_3712.jpg" alt="Vanillier">
+        <img src="IMG_4018.jpg" alt="Vanille sur branche">
+        <img src="IMG_4058.jpg" alt="Gousses de vanille">
+        <img src="IMG_0117.jpg" alt="Préparation">
+        <img src="Média (17).jpg" alt="Cascade">
+        <img src="OIP.webp" alt="Poivre noir">
+      </div>
+    </section>
+
+    <!-- ACTUALITES -->
+    <section id="news" class="page">
+      <h2 class="section-title">Actualités Vanille Madagascar</h2>
+      <div class="news-list">
+        <article class="news-item">
+          <a href="https://www.rfi.fr/fr/tag/vanille/" target="_blank" rel="noopener">RFI – Dossiers Vanille</a>
+          <p>Actualités et contexte économique liés à la filière vanille.</p>
+        </article>
+        <article class="news-item">
+          <a href="https://oec.world/en/profile/bilateral-product/vanilla/reporter/mdg" target="_blank" rel="noopener">OEC – Données export vanille Madagascar</a>
+          <p>Données de commerce international sur la vanille.</p>
+        </article>
+        <article class="news-item">
+          <a href="https://wits.worldbank.org/trade/comtrade/en/country/ALL/year/2024/tradeflow/Exports/partner/WLD/product/090500" target="_blank" rel="noopener">World Bank / WITS – Statistiques HS090500</a>
+          <p>Référence statistiques mondiales d’exportation vanille.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="page">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-box">
+          <ul>
+            <li><strong>Téléphone :</strong> <a href="tel:+261322549937">+261 32 25 499 37</a></li>
+            <li><strong>Email :</strong> <a href="mailto:commercial.export@cfood.store">commercial.export@cfood.store</a></li>
+            <li><strong>Adresse :</strong> Sect 7, Besopaka, Sambava Madagascar</li>
+          </ul>
+          <p class="muted">Clique sur le logo pour revenir à l’accueil.</p>
+        </div>
+        <div class="map-box">
+          <iframe
+            title="Carte Besopaka Sambava Madagascar"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Besopaka%20Sambava%20Madagascar&t=&z=13&ie=UTF8&iwloc=&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Challenge Food Export — Sambava, Madagascar
+  </footer>
+
+  <script>
+    // navigation page par page
+    const pages = document.querySelectorAll('.page');
+    const navBtns = document.querySelectorAll('[data-page]');
+    const topNavBtns = document.querySelectorAll('.nav button');
+
+    function showPage(id){
+      pages.forEach(p=>p.classList.remove('active'));
+      const target = document.getElementById(id);
+      if(target) target.classList.add('active');
+
+      topNavBtns.forEach(b=>b.classList.remove('active'));
+      const activeTop = document.querySelector(`.nav button[data-page="${id}"]`);
+      if(activeTop) activeTop.classList.add('active');
+
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    navBtns.forEach(btn=>{
+      btn.addEventListener('click', (e)=>{
+        const id = btn.dataset.page;
+        if(id){
+          e.preventDefault();
+          showPage(id);
+        }
+      });
+    });
+
+    // logo => home
+    document.querySelectorAll('[data-go="home"]').forEach(el=>{
+      el.addEventListener('click', (e)=>{
+        e.preventDefault();
+        showPage('home');
+      });
+    });
+
+    // switch modèles 3D
+    const mv = document.getElementById('mv3d');
+    const chips = document.querySelectorAll('.chip[data-glb]');
+    chips.forEach(ch=>{
+      ch.addEventListener('click', ()=>{
+        chips.forEach(c=>c.classList.remove('active'));
+        ch.classList.add('active');
+        mv.setAttribute('src', ch.dataset.glb);
+      });
+    });
+
+    // année footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
